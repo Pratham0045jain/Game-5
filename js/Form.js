@@ -4,6 +4,10 @@ var OK;
 var arrow;
 var maxScore;
 var archer;
+var tree;
+
+
+
 
 
 
@@ -80,7 +84,7 @@ class Form {
         arrow.position(displayWidth/2, displayHeight/3+30);
         arrow.style("background-color","orange");
 
-        maxScore = createInput("Score Required");
+        maxScore = createInput("Score Required = 100");
         maxScore.position(displayWidth/2, displayHeight/3+60);
         maxScore.style("background-color","cyan");
 
@@ -98,8 +102,16 @@ class Form {
         maxScore.hide();
         this.OK.hide();
         archer.hide();
-        //bow = new Bow(mouseX,mouseY);
-        bow.display();   
+        
+       // tree.position(displayWidth/2,displayHeight/2);
+        mouseFlag = true;
+        bow = new Bow(mouseX,mouseY);
+
+        for(var i = displayWidth/2;i>800;i = i+10){
+          fruit.push(new Fruit(i,random(200,300)));
+        }
+        
+         
       });
 
       /* this.button2.mousePressed(()=>{

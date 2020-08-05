@@ -7,13 +7,17 @@ var engine, world;
 var form;
 var bg;
 var bow;
-
+var mouseFlag = false;
+var treeImg;
 var level;
+
+var fruit = [];
 
 
 function preload(){
   bg = loadImage("Images/bgImage.jpg");
   archerImg = loadImage("Images/archer.png");
+  treeImg = loadImage("Images/tree.png");
 }
 
 function setup() {
@@ -22,10 +26,10 @@ function setup() {
   world = engine.world;
   
   form = new Form();
-  bow = new Bow(200,200);
+  //bow = new Bow(200,200);
 
-  var render = Render.create({ element: document.body, engine: engine, options: { width: 1200, height: 700, wireframes: false } });
-  Render.run(render);
+  /* var render = Render.create({ element: document.body, engine: engine, options: { width: 1200, height: 700, wireframes: false } });
+  Render.run(render); */
 
 }
 
@@ -36,6 +40,15 @@ function draw() {
     
      //image(archerImg,displayHeight/4,displayWidth/5);
 
+
+
+  if(mouseFlag===true){
+    image(treeImg,displayWidth/2,displayHeight/2,1000,500);
+    bow.display();  
+    for(var j=0; j<fruit.length; j++){
+      fruit[i].display();
+    }
+  }
      
 
   form.display();
