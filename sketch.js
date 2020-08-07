@@ -28,6 +28,12 @@ function setup() {
   form = new Form();
   //bow = new Bow(200,200);
 
+  
+    console.log("hi");
+    for(var i = 50; i<200; i = i+10){
+      fruit.push(new Fruit(i,750));
+  
+    }
   /* var render = Render.create({ element: document.body, engine: engine, options: { width: 1200, height: 700, wireframes: false } });
   Render.run(render); */
 
@@ -45,6 +51,7 @@ function draw() {
   if(mouseFlag===true){
     image(treeImg,displayWidth/2,displayHeight/2,1000,500);
     bow.display();  
+    //console.log(fruit);
     for(var j=0; j<fruit.length; j++){
       fruit[i].display();
     }
