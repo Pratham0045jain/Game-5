@@ -105,9 +105,16 @@ class Form {
         
        // tree.position(displayWidth/2,displayHeight/2);
         mouseFlag = true;
-        bow = new Bow(mouseX,mouseY);
+        for(var i = displayWidth/2; i<displayWidth; i = i+120){
+          fruit.push(new Fruit(i,random(400,750)));
+        } 
+        //bow = new Bow(1100,300);
+        arrow = new Arrow(900,300);
+        launcher = new Launcher(arrow.body,{x:1100,y:300});
 
         
+         
+
         
          
       });

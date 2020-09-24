@@ -2,14 +2,18 @@ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Render = Matter.Render;
+const Constraint = Matter.Constraint;
 
 var engine, world;
+var gameValue = 0;
 var form;
 var bg;
 var bow;
 var mouseFlag = false;
 var treeImg;
 var level;
+var arrow;
+var launcher;
 
 var fruit = [];
 
@@ -29,13 +33,10 @@ function setup() {
   //bow = new Bow(200,200);
 
   
-    console.log("hi");
-    for(var i = 50; i<200; i = i+10){
-      fruit.push(new Fruit(i,750));
-  
-    }
-  /* var render = Render.create({ element: document.body, engine: engine, options: { width: 1200, height: 700, wireframes: false } });
-  Render.run(render); */
+
+    
+  var render = Render.create({ element: document.body, engine: engine, options: { width: 1200, height: 700, wireframes: false } });
+  Render.run(render); 
 
 }
 
@@ -50,20 +51,40 @@ function draw() {
 
   if(mouseFlag===true){
     image(treeImg,displayWidth/2,displayHeight/2,1000,500);
-    bow.display();  
-    //console.log(fruit);
-    for(var j=0; j<fruit.length; j++){
+    for(var i=0; i<fruit.length; i++){
       fruit[i].display();
     }
+    arrow.display();
+    //bow.display();  
+    if(launcher.chain.bodyA !== null){
+      launcher.display();
+    }
+    
+    if(keyDown(32)){
+      gameValue = 1;
+      launcher.fly();
+    }
+    if(gameValue === 0){
+      Matter.Body.setPosition(arrow.body,{x:mouseX,y:mouseY});
+    } 
+    
+    //console.log(fruit);
+    
   }
-     
-
   form.display();
   drawSprites();
   
   
   }
-  
-  
+
 }
 
+/* function mouseDragged(){
+  
+
+}
+
+function mouseReleased(){
+  
+
+} */
